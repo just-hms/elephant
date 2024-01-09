@@ -6,13 +6,19 @@ precmd(){
 
 # write el.. to receive suggestions
 function sugg() {
-    if [[ $BUFFER == "el." ]]; then
-        BUFFER=`el | sort -u | fzf`
-    else
-      BUFFER="$BUFFER."
+    # Get the left part of the buffer up to the cursor position
+    local left_part=${BUFFER:0:$CURSOR}
+    
+    if [[ -n $left_part ]]; then        
+      BUFFER=$(el | sort -u | fzf -q "$left_part")
+    else;
+      BUFFER=$(el | sort -u | fzf)
     fi
-    CURSOR=$#BUFFER  # Move cursor to the end of the buffer
+    
+    # Update the cursor position
+    CURSOR=$#BUFFER
 }
 
+# bind sugg with Shift+Tab
 zle -N sugg
-bindkey '.' sugg
+bindkey '^[[Z' sugg

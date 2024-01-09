@@ -15,6 +15,7 @@ import (
 var flagSave = flag.Bool("save", false, "save a command specifiying a folder and a value")
 var flagFolder = flag.String("folder", "", "specify a folder")
 var flagAll = flag.Bool("all", false, "similar to `history`")
+var flagPrune = flag.Bool("prune", false, "remove all the commands that were launched in folder that don't exist anymore (unimplemented)")
 
 func CurrentFolder() string {
 	path, _ := os.Getwd()
@@ -72,6 +73,9 @@ func main() {
 		}
 		display.Println(cmds)
 		return
+	}
+	if *flagPrune {
+		panic("unimplemented")
 	}
 
 	if len(args) != 0 {
