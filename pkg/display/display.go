@@ -11,3 +11,9 @@ func Println(cmds []entity.Cmd) {
 		fmt.Println(c.Value)
 	}
 }
+
+func PrintHistory(cmds []entity.Cmd) {
+	for _, c := range cmds {
+		fmt.Println(c.Folder, c.Value)
+	}
+}

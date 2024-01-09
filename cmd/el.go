@@ -14,7 +14,7 @@ import (
 
 var flagSave = flag.Bool("save", false, "save a command specifiying a folder and a value")
 var flagFolder = flag.String("folder", "", "specify a folder")
-var flagAll = flag.Bool("all", false, "should be equal to `history`")
+var flagAll = flag.Bool("all", false, "similar to `history`")
 
 func CurrentFolder() string {
 	path, _ := os.Getwd()
@@ -59,7 +59,7 @@ func main() {
 		if err != nil {
 			panic(err)
 		}
-		display.Println(cmds)
+		display.PrintHistory(cmds)
 		return
 	}
 	if *flagFolder != "" {
