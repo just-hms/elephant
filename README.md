@@ -7,9 +7,7 @@
 > A small program with a log memory
 
 - run `el` to show you the list of command launched in the current dir.
-- write `el..` to show you suggestions based on them
-
-works very well with `fzf`
+- used `shift` + `Tab` to show you suggestions based on them (requires  `fzf`)
 
 
 ## todo
