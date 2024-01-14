@@ -1,21 +1,11 @@
 Set Shell zsh
+Set TypingSpeed 200ms # 500ms
 Sleep 500ms
-Type "el"
+Type "pwd"
 Enter
 Sleep 1s
-Escape
-Type "[Z"
-Sleep 500ms
-Escape
-Type "OA"
-Escape
-Type "OA"
-Escape
-Type "OB"
-Tab
+Type "el"
 Enter
-Sleep 100ms
-Ctrl+C
 Sleep 1s
 Type "el -h"
 Enter
