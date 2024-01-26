@@ -10,13 +10,19 @@ import (
 	"github.com/just-hms/elephant/pkg/entity"
 )
 
-type Repo struct {
-	Path string
+type repository struct {
+	path string
+}
+
+func New(path string) *repository {
+	return &repository{
+		path: path,
+	}
 }
 
 // Save writes a command to a file, ensuring that newlines in the command are properly escaped.
-func (r *Repo) Save(c *entity.Cmd) error {
-	file, err := os.OpenFile(r.Path, os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644)
+func (r *repository) Save(c *entity.Cmd) error {
+	file, err := os.OpenFile(r.path, os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644)
 	if err != nil {
 		return err
 	}
@@ -29,8 +35,8 @@ func (r *Repo) Save(c *entity.Cmd) error {
 }
 
 // load reads commands from a file, applying a filter function to each line.
-func (r *Repo) load(filter func(e string) bool) ([]entity.Cmd, error) {
-	file, err := os.Open(r.Path)
+func (r *repository) load(filter func(e string) bool) ([]entity.Cmd, error) {
+	file, err := os.Open(r.path)
 	if err != nil {
 		return nil, err
 	}
@@ -64,11 +70,11 @@ func (r *Repo) load(filter func(e string) bool) ([]entity.Cmd, error) {
 }
 
 // LoadAll returns all commands
-func (r *Repo) LoadAll() ([]entity.Cmd, error) {
+func (r *repository) LoadAll() ([]entity.Cmd, error) {
 	return r.load(func(e string) bool { return true })
 }
 
 // LoadAll returns all command inside a folder
-func (r *Repo) LoadFolder(folder string) ([]entity.Cmd, error) {
+func (r *repository) LoadFolder(folder string) ([]entity.Cmd, error) {
 	return r.load(func(e string) bool { return e == folder })
 }

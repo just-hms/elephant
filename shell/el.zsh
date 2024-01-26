@@ -1,6 +1,6 @@
 old_dir="$(pwd)"
 precmd(){ 
-  el --save "$old_dir" "$(fc -ln -1)"
+  el save -f "$old_dir" "$(fc -ln -1)"
   old_dir="$(pwd)"
 }
 
