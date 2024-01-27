@@ -1,0 +1,36 @@
+name: release
+
+on:
+  release:
+    types:
+      - created
+
+jobs:
+
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Set up Go
+      uses: actions/setup-go@v3
+      with:
+        go-version: 1.19
+
+    - name: Check version
+      run: go version
+
+    - name: Test
+      run: go test -v ./...
+
+    - name: Build executables
+      run: |
+        chmod +x .github/workflows/build.sh
+        .github/workflows/build.sh ${{ github.ref_name }}
+
+    - name: Copy build-artifacts
+      uses: skx/github-action-publish-binaries@master
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        args: "./out/*.tar.gz"

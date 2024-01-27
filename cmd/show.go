@@ -15,8 +15,8 @@ import (
 )
 
 var (
-	allFlag    bool
-	folderFlag string
+	allFlag        bool
+	showFolderFlag string
 )
 
 var showCmd = &cobra.Command{
@@ -51,8 +51,8 @@ It can display the history of:
 			return
 		}
 
-		if folderFlag != "" {
-			cmds, err := r.LoadFolder(folderFlag)
+		if showFolderFlag != "" {
+			cmds, err := r.LoadFolder(showFolderFlag)
 			if err != nil {
 				panic(err)
 			}
@@ -72,6 +72,7 @@ It can display the history of:
 func init() {
 	rootCmd.AddCommand(showCmd)
 
-	showCmd.Flags().BoolVarP(&allFlag, "all", "a", false, "Show all the history")
-	showCmd.Flags().StringVarP(&folderFlag, "folder", "f", "", "Show the history of a specified folder")
+	showCmd.Flags().BoolVarP(&allFlag, "all", "a", false, "show all the history")
+	showCmd.Flags().StringVarP(&showFolderFlag, "folder", "f", "", "show the history of a specified folder")
+	showCmd.MarkFlagsMutuallyExclusive("all", "folder")
 }

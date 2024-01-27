@@ -7,8 +7,6 @@ touch $HOME/.history.el
 
 if [ -f $zsh_file ] ; then
     
-     
-    
     if ! grep -q "$zsh_sourcer" $HOME/.zshrc ; then
         echo "" >> $zsh_file
         echo "# el" >> $zsh_file

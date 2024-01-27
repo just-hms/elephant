@@ -13,6 +13,8 @@ import (
 	"github.com/spf13/cobra"
 )
 
+var saveFolderFlag string
+
 // saveCmd represents the save command
 var saveCmd = &cobra.Command{
 	Use:   "save",
@@ -26,7 +28,7 @@ var saveCmd = &cobra.Command{
 		}
 		r := repo.New(path.Join(h, ".history.el"))
 
-		pat, err := filepath.Abs(folderFlag)
+		pat, err := filepath.Abs(saveFolderFlag)
 		if err != nil {
 			panic(err)
 		}
@@ -42,5 +44,5 @@ var saveCmd = &cobra.Command{
 
 func init() {
 	rootCmd.AddCommand(saveCmd)
-	saveCmd.Flags().StringVarP(&folderFlag, "folder", "f", "", "Show the history of a specified folder")
+	saveCmd.Flags().StringVarP(&saveFolderFlag, "folder", "f", "", "show the history of a specified folder")
 }
