@@ -8,3 +8,15 @@
 
 - run `el` to show you the list of command launched in the current folder.
 - use `shift` + `Tab` to show you suggestions based on the history in the current folder (requires  `fzf`)
+
+## Install
+
+```shell 
+curl -fsSL https://github.com/just-hms/elephant/blob/main/install | bash
+```
+
+## Uninstall
+
+```shell 
+curl -fsSL https://github.com/just-hms/elephant/blob/main/uninstall | bash
+```

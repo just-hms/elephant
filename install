@@ -1,7 +1,18 @@
 #!/bin/bash
 
+OS=""
+
+if [ "$(uname)" == "Darwin" ]; then
+    OS="darwin"
+elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
+    OS="linux"
+else 
+    echo "sorry only linux and darwin are supported"
+    exit 1
+fi
+
 mkdir -p $HOME/.el
-curl -sSL https://github.com/just-hms/elephant/releases/latest/download/el-linux-amd64.tar.gz | tar -xzf - -C $HOME/.el
+curl -sSL https://github.com/just-hms/elephant/releases/latest/download/el-$OS-amd64.tar.gz | tar -xzf - -C $HOME/.el
 sudo mv $HOME/.el/el /usr/local/bin/el
 
 # create the file for the history
@@ -26,7 +37,7 @@ fi
 bash_file="$HOME/.bashrc"
 bash_sourcer="[ -f ~/.el/.el.bash ] && source ~/.el/.el.bash"
 
-if [ -f $sh_file ] ; then
+if [ -f $bash_file ] ; then
     
     if ! grep -q "$bash_sourcer" ~/.bashrc ; then
         echo "" >> $bash_file
