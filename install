@@ -2,7 +2,7 @@
 
 mkdir -p $HOME/.el
 curl -sSL https://github.com/just-hms/elephant/releases/latest/download/el-linux-amd64.tar.gz | tar -xzf - -C $HOME/.el
-ln -s $HOME/.el/el /usr/local/bin/el
+sudo mv $HOME/.el/el /usr/local/bin/el
 
 # create the file for the history
 touch $HOME/.history.el
@@ -13,8 +13,8 @@ zsh_file="$HOME/.zshrc"
 zsh_sourcer="[ -f ~/.el/.el.zsh ] && source ~/.el/.el.zsh"
 
 if [ -f $zsh_file ] ; then
-    
-    if ! grep -q "$zsh_sourcer" "$zsh_file" ; then
+
+    if ! grep -q "$zsh_sourcer" ~/.zshrc ; then
         echo "" >> $zsh_file
         echo "# el" >> $zsh_file
         echo $zsh_sourcer >> $zsh_file
@@ -23,18 +23,16 @@ fi
 
 ## BASH ---
 
-sh_file="$HOME/.bashrc"
-sh_sourcer="[ -f ~/.el/.el.bash ] && source ~/.el/.el.bash"
+bash_file="$HOME/.bashrc"
+bash_sourcer="[ -f ~/.el/.el.bash ] && source ~/.el/.el.bash"
 
 if [ -f $sh_file ] ; then
     
-    if ! grep -q "$sh_sourcer" "$sh_file" ; then
-        echo "" >> $sh_file
-        echo "# el" >> $sh_file
-        echo $sh_sourcer >> $sh_file
+    if ! grep -q "$bash_sourcer" ~/.bashrc ; then
+        echo "" >> $bash_file
+        echo "# el" >> $bash_file
+        echo $bash_sourcer >> $bash_file
     fi;
-
 fi
 
-# print this based on the current shell
-echo "> source \"$sh_file\""
+echo "source your .rc file"

@@ -1,8 +1,10 @@
 #!/bin/bash
 
-rm /usr/local/bin/el
+sudo rm /usr/local/bin/el
 rm -r $HOME/.el
 
 # rm $HOME/.history.el
 
-# TODO: remove sourcers
+# remove sourcers
+sed -i '/# el/,/\.el\.zsh/d' ~/.zshrc
+sed -i '/# el/,/\.el\.bash/d' ~/.bashrc
