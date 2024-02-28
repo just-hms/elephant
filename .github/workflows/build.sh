@@ -27,7 +27,7 @@ env GOARCH=amd64 GOOS=darwin go build -ldflags="-X 'el/internal/constants.Versio
 
 echo "windows"
 env GOARCH=amd64 GOOS=windows go build -ldflags="-X 'el/internal/constants.Version=$1'" -o ./out/el.exe ./cmd/
-(cd $OUT && tar -cvzf el-windows-amd64.tar.gz README.md el && rm ./el)
+(cd $OUT && tar -cvzf el-windows-amd64.tar.gz README.md el.exe && rm ./el.exe)
 
 
 echo "Cleaning up.."
