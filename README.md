@@ -12,11 +12,11 @@
 ## Install
 
 ```shell 
-curl -fsSL https://github.com/just-hms/elephant/blob/main/install | bash
+curl -fsSL https://raw.githubusercontent.com/just-hms/elephant/main/install | bash
 ```
 
 ## Uninstall
 
 ```shell 
-curl -fsSL https://github.com/just-hms/elephant/blob/main/uninstall | bash
+curl -fsSL https://raw.githubusercontent.com/just-hms/elephant/main/uninstall | bash
 ```
