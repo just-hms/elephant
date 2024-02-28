@@ -1,0 +1,8 @@
+#!/bin/bash
+
+rm /usr/local/bin/el
+rm -r $HOME/.el
+
+# rm $HOME/.history.el
+
+# TODO: remove sourcers
