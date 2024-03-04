@@ -17,6 +17,7 @@ curl -fsSL https://raw.githubusercontent.com/just-hms/elephant/main/install | ba
 
 ## Uninstall
 
-```shell 
-curl -fsSL https://raw.githubusercontent.com/just-hms/elephant/main/uninstall | bash
+```shell
+# run
+~/.el/uninstall
 ```
