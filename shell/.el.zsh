@@ -4,7 +4,7 @@
 old_dir="$(pwd)"
 
 # launch el save to change the el history file
-precmd(){ 
+precmd(){
   el save -f "$old_dir" "$(fc -ln -1)"
   old_dir="$(pwd)"
 }

@@ -36,6 +36,7 @@ fi
 
 bash_file="$HOME/.bashrc"
 bash_sourcer="[ -f ~/.el/.el.bash ] && source ~/.el/.el.bash"
+bash_precmd_sourcer="[[ -f ~/.bash-preexec.sh ]] && source ~/.bash-preexec.sh"
 
 if [ -f $bash_file ] ; then
     
@@ -43,6 +44,15 @@ if [ -f $bash_file ] ; then
         echo "" >> $bash_file
         echo "# el" >> $bash_file
         echo $bash_sourcer >> $bash_file
+    fi;
+
+    if ! grep -q "$bash_precmd_sourcer" ~/.bashrc ; then
+
+        # pulling bash-preexec.sh
+        curl https://raw.githubusercontent.com/rcaloras/bash-preexec/master/bash-preexec.sh -o ~/.bash-preexec.sh
+        echo "" >> $bash_file
+        echo "# el dependency" >> $bash_file
+        echo $bash_precmd_sourcer >> $bash_file
     fi;
 fi
 
