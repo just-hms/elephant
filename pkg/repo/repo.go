@@ -21,7 +21,27 @@ func New(path string) *repository {
 }
 
 // Save writes a command to a file, ensuring that newlines in the command are properly escaped.
-func (r *repository) Save(c *entity.Cmd) error {
+func (r *repository) Replace(cmds []entity.Cmd) error {
+	destFile, err := os.Create(r.path)
+	if err != nil {
+		return err
+	}
+	defer destFile.Close()
+
+	for _, c := range cmds {
+		escapedFolder := strings.ReplaceAll(c.Folder, "\n", "\\n")
+		escapedValue := strings.ReplaceAll(c.Value, "\n", "\\n")
+		_, err = destFile.WriteString(fmt.Sprintf("%s %s\n", escapedFolder, escapedValue))
+		if err != nil {
+			return err
+		}
+	}
+
+	return nil
+}
+
+// Save writes a command to a file, ensuring that newlines in the command are properly escaped.
+func (r *repository) Save(c entity.Cmd) error {
 	file, err := os.OpenFile(r.path, os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644)
 	if err != nil {
 		return err

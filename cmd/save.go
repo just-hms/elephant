@@ -32,7 +32,7 @@ var saveCmd = &cobra.Command{
 		if err != nil {
 			panic(err)
 		}
-		err = r.Save(&entity.Cmd{
+		err = r.Save(entity.Cmd{
 			Folder: pat,
 			Value:  args[0],
 		})
