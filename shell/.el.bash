@@ -21,7 +21,7 @@ function sugg() {
   fi
 }
 
-# bind sugg with Ctrl+e
-bind -m emacs-standard -x '"\C-e": sugg'
-bind -m vi-command -x '"\C-e": sugg'
-bind -m vi-insert -x '"\C-e": sugg'
+# bind sugg with Ctrl+Space
+bind -m emacs-standard -x '"\C-@": sugg'
+bind -m vi-command -x '"\C-@": sugg'
+bind -m vi-insert -x '"\C-@": sugg'

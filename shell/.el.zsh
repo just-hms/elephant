@@ -21,6 +21,6 @@ function sugg() {
   CURSOR=$#BUFFER
 }
 
-# bind sugg with Shift+Tab
+# bind sugg with Ctrl + Space
 zle -N sugg
-bindkey '^e' sugg
+bindkey '^@' sugg
