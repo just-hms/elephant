@@ -6,5 +6,7 @@ rm -r $HOME/.el
 # rm $HOME/.history.el
 
 # remove sourcers
-sed -i '/# el/,/\.el\.zsh/d' ~/.zshrc
-sed -i '/# el/,/\.el\.bash/d' ~/.bashrc
+sed -i.bak '/# el/,/\.el\.zsh/d' ~/.zshrc
+rm ~/.zshrc.bak
+sed -i.bak '/# el/,/\.el\.bash/d' ~/.bashrc
+rm ~/.bashrc.bak
