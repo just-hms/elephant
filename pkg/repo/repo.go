@@ -29,7 +29,7 @@ func (r *repository) Replace(cmds []entity.Cmd) error {
 	defer destFile.Close()
 
 	for _, c := range cmds {
-		_, err := destFile.WriteString(fmt.Sprintf("%s %s\n", escape(c.Folder), escape(c.Value)))
+		_, err := destFile.WriteString(fmt.Sprintf("%s %s\n", c.Folder, c.Value))
 		if err != nil {
 			return err
 		}
@@ -46,7 +46,7 @@ func (r *repository) Save(c entity.Cmd) error {
 	}
 	defer file.Close()
 
-	_, err = file.WriteString(fmt.Sprintf("%s %s\n", escape(c.Folder), escape(c.Value)))
+	_, err = file.WriteString(fmt.Sprintf("%s %s\n", c.Folder, c.Value))
 	return err
 }
 
@@ -69,8 +69,8 @@ func (r *repository) load(filter func(e string) bool) ([]entity.Cmd, error) {
 		}
 
 		c := entity.Cmd{
-			Folder: deEscape(vals[0]),
-			Value:  deEscape(vals[1]),
+			Folder: vals[0],
+			Value:  vals[1],
 		}
 
 		if filter(c.Folder) {
