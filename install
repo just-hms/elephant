@@ -1,5 +1,7 @@
 #!/bin/bash
 
+
+# remove the latest version
 [ -f ~/.el/uninstall ] && ~/.el/uninstall
 
 OS=""
@@ -8,7 +10,7 @@ if [ "$(uname)" == "Darwin" ]; then
     OS="darwin"
 elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
     OS="linux"
-else 
+else
     echo "sorry only linux and darwin are supported"
     exit 1
 fi
@@ -41,7 +43,7 @@ bash_sourcer="[ -f ~/.el/.el.bash ] && source ~/.el/.el.bash"
 bash_precmd_sourcer="[[ -f ~/.bash-preexec.sh ]] && source ~/.bash-preexec.sh"
 
 if [ -f $bash_file ] ; then
-    
+
     if ! grep -q "$bash_sourcer" ~/.bashrc ; then
         echo "" >> $bash_file
         echo "# el" >> $bash_file

@@ -18,16 +18,16 @@ var pruneCmd = &cobra.Command{
 	Short: "remove all the commands that were launched in folder that don't exist anymore",
 	Long:  ``,
 	Args:  cobra.NoArgs,
-	Run: func(cmd *cobra.Command, _ []string) {
+	RunE: func(cmd *cobra.Command, _ []string) error {
 		h, err := os.UserHomeDir()
 		if err != nil {
-			panic(err)
+			return err
 		}
 		r := repo.New(path.Join(h, ".history.el"))
 
 		cmds, err := r.LoadAll()
 		if err != nil {
-			panic(err)
+			return err
 		}
 
 		pruned := []entity.Cmd{}
@@ -49,10 +49,11 @@ var pruneCmd = &cobra.Command{
 			}
 		}
 
-		err = r.Replace(pruned)
-		if err != nil {
-			panic(err)
+		if err = r.Replace(pruned); err != nil {
+			return err
 		}
+
+		return nil
 	},
 }
 
