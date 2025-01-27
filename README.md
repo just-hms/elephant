@@ -11,7 +11,7 @@
 
 ## Install
 
-1. Install `el` with a single command:
+1. *Install `el`*:
 
 ```sh
 go install github.com/just-hms/elephant@latest
@@ -21,9 +21,9 @@ Alternatively, download the precompiled binary from the [latest](https://github.
 
 ---
 
-2. Set up shell integration (used to intercept the history)
+2. *Set up shell integration*
 
-Add the following line to your shell configuration file.
+Add the following line to your shell configuration file:
 
 - bash
 
@@ -39,7 +39,7 @@ Add the following line to your shell configuration file.
 
 ---
 
-3. <OPTIONAL> Install https://github.com/junegunn/fzf to use keybindings
+3. (OPTIONAL) Install https://github.com/junegunn/fzf to use keybindings
 
 ## Getting Started
 
