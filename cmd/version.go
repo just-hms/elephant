@@ -15,8 +15,9 @@ var versionCmd = &cobra.Command{
 	Use:   "version",
 	Short: "display the version of el",
 	Long:  `display the version of els`,
-	Run: func(cmd *cobra.Command, args []string) {
+	RunE: func(cmd *cobra.Command, args []string) error {
 		fmt.Println(internal.Version)
+		return nil
 	},
 }
 

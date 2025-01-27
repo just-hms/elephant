@@ -18,27 +18,28 @@ var saveFolderFlag string
 // saveCmd represents the save command
 var saveCmd = &cobra.Command{
 	Use:   "save",
-	Short: "save a command specifiying a folder and a value",
+	Short: "save a command specifying a folder and a value",
 	Long:  ``,
 	Args:  cobra.ExactArgs(1),
-	Run: func(cmd *cobra.Command, args []string) {
+	RunE: func(cmd *cobra.Command, args []string) error {
 		h, err := os.UserHomeDir()
 		if err != nil {
-			panic(err)
+			return err
 		}
 		r := repo.New(path.Join(h, ".history.el"))
 
 		pat, err := filepath.Abs(saveFolderFlag)
 		if err != nil {
-			panic(err)
+			return err
 		}
 		err = r.Save(entity.Cmd{
 			Folder: pat,
 			Value:  args[0],
 		})
 		if err != nil {
-			panic(err)
+			return err
 		}
+		return nil
 	},
 }
 

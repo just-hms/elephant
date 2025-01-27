@@ -9,7 +9,7 @@ import (
 	"path/filepath"
 
 	"github.com/just-hms/elephant/pkg/display"
-	"github.com/just-hms/elephant/pkg/osext"
+	"github.com/just-hms/elephant/pkg/osx"
 	"github.com/just-hms/elephant/pkg/repo"
 	"github.com/spf13/cobra"
 )
@@ -22,7 +22,7 @@ var (
 var showCmd = &cobra.Command{
 	Use:   "show",
 	Short: "show the history",
-	Long: `Show provides a detailed view of the command history. 
+	Long: `Show provides a detailed view of the command history.
 
 It can display the history of:
 - the current folder
@@ -30,16 +30,16 @@ It can display the history of:
 - the history for a specific folder.
 `,
 	Args: cobra.ExactArgs(0),
-	Run: func(cmd *cobra.Command, args []string) {
+	RunE: func(cmd *cobra.Command, args []string) error {
 		h, err := os.UserHomeDir()
 		if err != nil {
-			panic(err)
+			return err
 		}
 		r := repo.New(path.Join(h, ".history.el"))
 
-		pat, err := filepath.Abs(osext.CurrentFolder())
+		pat, err := filepath.Abs(osx.CurrentFolder())
 		if err != nil {
-			panic(err)
+			return err
 		}
 
 		if allFlag {
@@ -48,7 +48,7 @@ It can display the history of:
 				panic(err)
 			}
 			display.PrintFolders(cmds)
-			return
+			return nil
 		}
 
 		if showFolderFlag != "" {
@@ -57,15 +57,16 @@ It can display the history of:
 				panic(err)
 			}
 			display.PrintValues(cmds)
-			return
+			return nil
 		}
 
 		// Default behavior
 		cmds, err := r.LoadFolder(pat)
 		if err != nil {
-			panic(err)
+			return err
 		}
 		display.PrintValues(cmds)
+		return nil
 	},
 }
 

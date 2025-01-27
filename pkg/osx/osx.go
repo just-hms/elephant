@@ -1,4 +1,4 @@
-package osext
+package osx
 
 import "os"
 

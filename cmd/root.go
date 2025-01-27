@@ -14,8 +14,8 @@ var rootCmd = &cobra.Command{
 	Use:   "el",
 	Short: "A small program with a long memory",
 	Long:  ``,
-	Run: func(cmd *cobra.Command, args []string) {
-		showCmd.Run(cmd, args)
+	RunE: func(cmd *cobra.Command, args []string) error {
+		return showCmd.RunE(cmd, args)
 	},
 }
 
