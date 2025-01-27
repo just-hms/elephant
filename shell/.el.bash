@@ -11,7 +11,7 @@ precmd(){
 
 # suggestion function, uses fzf to select the command to suggest
 function sugg() {
-  output=$(el | fzf -q "$READLINE_LINE" +m --read0 | sed 's/\\\\n/\\\n/g')
+  output=$(el | fzf -q "$READLINE_LINE" | sed 's/\\\\n/\\\n/g')
 
   READLINE_LINE=${output#*$'\t'}
   if [[ -z "$READLINE_POINT" ]]; then
