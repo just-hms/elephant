@@ -1,5 +1,5 @@
 <p align="center">
-    <img style="width:8em;" src="./assets/logo.png" alt="jim">
+    <img style="width:8em;" src="./assets/logo.png" alt="elephant-logo">
 </p>
 
 # Elephant
@@ -7,14 +7,14 @@
 > A small program with a long memory
 
 - run `el` to show you the list of command launched in the current folder.
-- use <kbd>Ctrl</kbd>+<kbd>Spacebar</kbd> to show you suggestions based on the history in the current folder (requires  `fzf`)
+- use <kbd>Ctrl</kbd>+<kbd>Spacebar</kbd> to show you suggestions based on the history in the current folder (requires `fzf`)
 
 ## Install
 
 Install Elephant with a single command:
 
 ```sh
-go install github.com/just-hms/elephant/el@latest
+go install github.com/just-hms/elephant@latest
 ```
 
 Alternatively, download the precompiled binary from the [latest](https://github.com/just-hms/elephant/releases/latest) release and move it to your system's `PATH`
