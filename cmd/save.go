@@ -19,7 +19,6 @@ var saveFolderFlag string
 var saveCmd = &cobra.Command{
 	Use:   "save",
 	Short: "save a command specifying a folder and a value",
-	Long:  ``,
 	Args:  cobra.ExactArgs(1),
 	RunE: func(cmd *cobra.Command, args []string) error {
 		h, err := os.UserHomeDir()
