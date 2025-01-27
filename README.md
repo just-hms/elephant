@@ -13,19 +13,29 @@
 
 Install Elephant with a single command:
 
-```shell 
-curl -fsSL https://raw.githubusercontent.com/just-hms/elephant/main/install | bash
+```sh
+go install github.com/just-hms/elephant/el@latest
 ```
 
-> **Note**: The same command can be used to upgrade Elephant to the latest version.
+Alternatively, download the precompiled binary from the [latest](https://github.com/just-hms/elephant/releases/latest) release and move it to your system's `PATH`
 
+## Setting up shell integration
 
-## Uninstall
+> Install https://github.com/junegunn/fzf to use keybindings
 
-```shell
-# run
-~/.el/uninstall
-```
+Add the following line to your shell configuration file.
+
+- bash
+
+  ```sh
+  eval "$(el --bash)"
+  ```
+
+- zsh
+
+  ```sh
+  source <(el --zsh)
+  ```
 
 ## Getting Started
 

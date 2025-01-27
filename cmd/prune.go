@@ -15,8 +15,7 @@ import (
 // pruneCmd represents the prune command
 var pruneCmd = &cobra.Command{
 	Use:   "prune",
-	Short: "remove all the commands that were launched in folder that don't exist anymore",
-	Long:  ``,
+	Short: "remove all the commands that were launched in folders that don't exist anymore",
 	Args:  cobra.NoArgs,
 	RunE: func(cmd *cobra.Command, _ []string) error {
 		h, err := os.UserHomeDir()

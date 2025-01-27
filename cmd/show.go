@@ -73,6 +73,10 @@ It can display the history of:
 func init() {
 	rootCmd.AddCommand(showCmd)
 
+	rootCmd.Flags().BoolVarP(&allFlag, "all", "a", false, "show all the history")
+	rootCmd.Flags().StringVarP(&showFolderFlag, "folder", "f", "", "show the history of a specified folder")
+	rootCmd.MarkFlagsMutuallyExclusive("all", "folder")
+
 	showCmd.Flags().BoolVarP(&allFlag, "all", "a", false, "show all the history")
 	showCmd.Flags().StringVarP(&showFolderFlag, "folder", "f", "", "show the history of a specified folder")
 	showCmd.MarkFlagsMutuallyExclusive("all", "folder")
