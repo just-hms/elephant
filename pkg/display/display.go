@@ -8,12 +8,12 @@ import (
 
 func PrintValues(cmds []entity.Cmd) {
 	for _, c := range cmds {
-		fmt.Println(c.Value + "\x00")
+		fmt.Printf("%s\x00", c.Value)
 	}
 }
 
 func PrintFolders(cmds []entity.Cmd) {
 	for _, c := range cmds {
-		fmt.Println(c.Folder, c.Value+"\x00")
+		fmt.Printf("%s %s\x00", c.Folder, c.Value)
 	}
 }
