@@ -69,8 +69,8 @@ func (r *repository) load(filter func(e string) bool) ([]entity.Cmd, error) {
 		}
 
 		c := entity.Cmd{
-			Folder: vals[0],
-			Value:  vals[1],
+			Folder: deEscape(vals[0]),
+			Value:  deEscape(vals[1]),
 		}
 
 		if filter(c.Folder) {

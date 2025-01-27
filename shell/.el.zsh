@@ -16,7 +16,6 @@ function sugg() {
 
   # change the buffer to match the selection
   BUFFER=$(el | fzf -q "$left_part" +m --read0 | sed 's/\\\\n/\\\n/g')
-
   # Update the cursor position
   CURSOR=$#BUFFER
 }
