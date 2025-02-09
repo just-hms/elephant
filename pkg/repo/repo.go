@@ -55,7 +55,7 @@ func (r *repository) load(filter func(e string) bool) ([]entity.Cmd, error) {
 	file, err := os.Open(r.path)
 	if err != nil {
 		// create the file if it doesn't exists
-		file, err = os.Create(r.path)
+		file, err = os.OpenFile(r.path, os.O_APPEND|os.O_CREATE|os.O_RDONLY, 0644)
 		if err != nil {
 			return nil, err
 		}
