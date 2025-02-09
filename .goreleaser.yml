@@ -1,6 +1,6 @@
 version: 2
 
-project_name: dow
+project_name: elephants
 builds:
   - goos:
       - linux
@@ -8,7 +8,7 @@ builds:
     goarch:
       - amd64
       - arm64
-    main: .
+    main: cmd/el
     binary: el
 
 archives:
