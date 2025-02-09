@@ -14,7 +14,7 @@
 1. **Install `el`**
 
 ```sh
-go install github.com/just-hms/elephant@latest
+go install github.com/just-hms/elephant/cmd/el@latest
 ```
 
 Alternatively, download the precompiled binary from the [latest](https://github.com/just-hms/elephant/releases/latest) release and move it to your system's `PATH`
