@@ -54,7 +54,11 @@ func (r *repository) Save(c entity.Cmd) error {
 func (r *repository) load(filter func(e string) bool) ([]entity.Cmd, error) {
 	file, err := os.Open(r.path)
 	if err != nil {
-		return nil, err
+		// create the file if it doesn't exists
+		file, err = os.Create(r.path)
+		if err != nil {
+			return nil, err
+		}
 	}
 	defer file.Close()
 
